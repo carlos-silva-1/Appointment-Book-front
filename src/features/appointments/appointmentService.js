@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+const SERVER_URL = 'https://appointment-book-server.onrender.com';
 const API_URL = '/api/appointments/'
 
 // Create new appointment
@@ -10,7 +11,7 @@ const createAppointment = async (appointmentData, token) => {
     },
   }
 
-  const response = await axios.post(API_URL, appointmentData, config)
+  const response = await axios.post(`${SERVER_URL}${API_URL}`, appointmentData, config)
 
   return response.data
 }
@@ -23,7 +24,7 @@ const getAppointments = async (token) => {
     },
   }
 
-  const response = await axios.get(API_URL, config)
+  const response = await axios.get(`${SERVER_URL}${API_URL}`, config)
 
   return response.data
 }
@@ -36,7 +37,7 @@ const deleteAppointment = async (appointmentId, token) => {
     },
   }
 
-  const response = await axios.delete(API_URL + appointmentId, config)
+  const response = await axios.delete(`${SERVER_URL}${API_URL}` + appointmentId, config)
 
   return response.data
 }
